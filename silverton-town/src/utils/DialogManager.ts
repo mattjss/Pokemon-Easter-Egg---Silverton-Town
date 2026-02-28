@@ -1,21 +1,24 @@
 import { DIALOG } from '../data/dialog';
 
-const TYPEWRITER_MS_PER_CHAR = 28;
+const TYPEWRITER_MS = 25;
+const LINES_PER_PAGE = 2;
 
 export class DialogManager {
   private visible = false;
-  private queue: string[] = [];
-  private currentLine = '';
+  private pages: string[][] = [];
+  private pageIndex = 0;
+  private currentText = '';
   private displayedLength = 0;
   private typewriterAccum = 0;
   private speakerName: string | null = null;
-  private onTypewriterTick: ((str: string) => void) | null = null;
+  private skipTypewriter = false;
+  private onPageText: ((text: string) => void) | null = null;
   private onVisibility: ((visible: boolean) => void) | null = null;
   private onSpeaker: ((name: string | null) => void) | null = null;
   private onClosed: (() => void) | null = null;
 
-  setOnTypewriterTick(fn: (str: string) => void): void {
-    this.onTypewriterTick = fn;
+  setOnPageText(fn: (text: string) => void): void {
+    this.onPageText = fn;
   }
 
   setOnVisibility(fn: (visible: boolean) => void): void {
@@ -34,47 +37,58 @@ export class DialogManager {
     const content = DIALOG[dialogId];
     if (content == null) return;
 
-    const lines = Array.isArray(content) ? content : [content];
-    this.queue = lines.flatMap((line) => (typeof line === 'string' ? line.split('\n') : [String(line)]));
+    const lines = (Array.isArray(content) ? content : [content]).flatMap((l) =>
+      (typeof l === 'string' ? l : String(l)).split('\n')
+    );
+    this.pages = [];
+    for (let i = 0; i < lines.length; i += LINES_PER_PAGE) {
+      this.pages.push(lines.slice(i, i + LINES_PER_PAGE));
+    }
+    if (this.pages.length === 0) this.pages.push(['']);
+    this.pageIndex = 0;
     this.speakerName = speakerName ?? null;
     this.visible = true;
     this.onVisibility?.(true);
     this.onSpeaker?.(this.speakerName);
-    this.startNextLine();
+    this.startPage();
   }
 
-  private startNextLine(): void {
-    if (this.queue.length === 0) {
+  private startPage(): void {
+    this.currentText = this.pages[this.pageIndex].join('\n');
+    this.displayedLength = 0;
+    this.typewriterAccum = 0;
+    this.skipTypewriter = false;
+    this.onPageText?.('');
+  }
+
+  advance(): void {
+    if (!this.visible) return;
+    if (this.displayedLength < this.currentText.length) {
+      this.displayedLength = this.currentText.length;
+      this.onPageText?.(this.currentText);
+      return;
+    }
+    this.pageIndex++;
+    if (this.pageIndex >= this.pages.length) {
       this.visible = false;
       this.onVisibility?.(false);
       this.onClosed?.();
       return;
     }
-    const next = this.queue.shift();
-    this.currentLine = next ?? '';
-    this.displayedLength = 0;
-    this.typewriterAccum = 0;
-    this.onTypewriterTick?.('');
+    this.startPage();
   }
 
-  advance(): void {
-    if (!this.visible) return;
-    if (this.displayedLength < this.currentLine.length) {
-      this.displayedLength = this.currentLine.length;
-      this.onTypewriterTick?.(this.currentLine);
-      return;
-    }
-    this.startNextLine();
+  setSkipTypewriter(skip: boolean): void {
+    this.skipTypewriter = skip;
   }
 
   update(delta: number): void {
-    if (!this.visible) return;
-    if (this.displayedLength >= this.currentLine.length) return;
+    if (!this.visible || this.skipTypewriter || this.displayedLength >= this.currentText.length) return;
     this.typewriterAccum += delta;
-    while (this.typewriterAccum >= TYPEWRITER_MS_PER_CHAR && this.displayedLength < this.currentLine.length) {
-      this.typewriterAccum -= TYPEWRITER_MS_PER_CHAR;
+    while (this.typewriterAccum >= TYPEWRITER_MS && this.displayedLength < this.currentText.length) {
+      this.typewriterAccum -= TYPEWRITER_MS;
       this.displayedLength++;
-      this.onTypewriterTick?.(this.currentLine.slice(0, this.displayedLength));
+      this.onPageText?.(this.currentText.slice(0, this.displayedLength));
     }
   }
 
@@ -82,12 +96,12 @@ export class DialogManager {
     return this.visible;
   }
 
-  isCurrentLineComplete(): boolean {
-    return this.displayedLength >= this.currentLine.length;
+  isCurrentPageComplete(): boolean {
+    return this.displayedLength >= this.currentText.length;
   }
 
   close(): void {
-    this.queue = [];
+    this.pages = [];
     this.visible = false;
     this.onVisibility?.(false);
   }
