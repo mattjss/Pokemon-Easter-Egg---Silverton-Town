@@ -442,7 +442,7 @@
             {
               "name": "scenario_ids",
               "type": "string",
-              "value": "2"
+              "value": "5"
             },
             {
               "name": "sprite",
@@ -514,7 +514,7 @@
             {
               "name": "content",
               "type": "string",
-              "value": "There's an e-mail message here!;Calling all POKEMON trainers!\nThe elite trainers of POKEMON LEAGUE are ready to take on all comers! Bring your best POKEMON and see how you rate as a trainer!;POKEMON LEAGUE HQ INDIGO PLATEAU\nPS: PROF.OAK, please visit us!"
+              "value": "Current project: A Pokémon-style portfolio. You're in it right now."
             }
           ],
           "rotation": 0,

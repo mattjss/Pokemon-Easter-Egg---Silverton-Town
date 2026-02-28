@@ -589,7 +589,7 @@
             {
               "name": "content",
               "type": "string",
-              "value": "PALLET TOWN\nShades of your journey await!"
+              "value": "Silvertown"
             }
           ],
           "rotation": 0,
@@ -636,6 +636,74 @@
           "width": 0,
           "x": 261.333333333333,
           "y": 746.666666666667
+        },
+        {
+          "height": 0,
+          "id": 127,
+          "name": "dialog",
+          "point": true,
+          "properties": [
+            {
+              "name": "content",
+              "type": "string",
+              "value": "Welcome to Silvertown. Population: 1 designer. Specialties: UI/UX, Web, Hockey Stats."
+            }
+          ],
+          "rotation": 0,
+          "type": "",
+          "visible": true,
+          "width": 0,
+          "x": 456,
+          "y": 950
+        },
+        {
+          "height": 0,
+          "id": 128,
+          "name": "npc",
+          "point": true,
+          "properties": [
+            {
+              "name": "facing_direction",
+              "type": "string",
+              "value": "down"
+            },
+            {
+              "name": "move",
+              "type": "bool",
+              "value": false
+            },
+            {
+              "name": "name",
+              "type": "string",
+              "value": "villager_silvertown"
+            },
+            {
+              "name": "scenario_ids",
+              "type": "string",
+              "value": "4"
+            },
+            {
+              "name": "sprite",
+              "type": "string",
+              "value": "scientist"
+            },
+            {
+              "name": "x",
+              "type": "int",
+              "value": 9
+            },
+            {
+              "name": "y",
+              "type": "int",
+              "value": 18
+            }
+          ],
+          "rotation": 0,
+          "type": "",
+          "visible": true,
+          "width": 0,
+          "x": 456,
+          "y": 912
         },
         {
           "height": 0,
@@ -760,7 +828,7 @@
     }
   ],
   "nextlayerid": 14,
-  "nextobjectid": 127,
+  "nextobjectid": 129,
   "orientation": "orthogonal",
   "renderorder": "right-down",
   "tiledversion": "1.10.2",
