@@ -4,6 +4,8 @@ import { UIEvents } from "../../constants/events";
 import { openDialog } from "../../utils/ui";
 import { useUIStore } from "../../stores/ui";
 import { SettingsMenu } from "./menus/SettingsMenu";
+import { BagMenu } from "./menus/BagMenu";
+import { YouMenu } from "./menus/YouMenu";
 import { useEventsListeners } from "../../utils/events";
 import { TeamMenu } from "./menus/TeamMenu";
 
@@ -45,12 +47,11 @@ export const Menu = () => {
 
   const selectOption = () => {
     if (store.menu.isOpen && !selected && !store.dialog.isOpen) {
-      if ([Options.POKEDEX, Options.BAG, Options.YOU].includes(hovered)) {
+      if (hovered === Options.POKEDEX) {
         return openDialog({
           content: `This feature is not ready yet.`,
         });
       }
-
       setSelected(hovered);
     }
   };
@@ -104,6 +105,14 @@ export const Menu = () => {
 
   if (selected === Options.TEAM) {
     return <TeamMenu setSelectedOption={setSelected} />;
+  }
+
+  if (selected === Options.BAG) {
+    return <BagMenu setSelectedOption={setSelected} />;
+  }
+
+  if (selected === Options.YOU) {
+    return <YouMenu setSelectedOption={setSelected} />;
   }
 
   return (

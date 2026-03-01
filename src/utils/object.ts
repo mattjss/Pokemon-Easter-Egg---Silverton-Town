@@ -448,9 +448,16 @@ export const spawnNPCs = (scene: WorldScene) => {
         return removeObject(scene, npc);
       }
 
-      const phaserSprite = scene.add.sprite(0, 0, sprite);
+      const spriteKey = scene.textures.exists(sprite) ? sprite : "scientist";
+      const phaserSprite = scene.add.sprite(0, 0, spriteKey);
       phaserSprite.setOrigin(0.5, 0.5);
       phaserSprite.setDepth(1);
+
+      const tint = getTiledObjectProperty("tint", npc);
+      if (tint) {
+        const hex = tint.startsWith("0x") ? tint : `0x${tint}`;
+        phaserSprite.setTint(parseInt(hex, 16));
+      }
 
       scene.gridEngine.addCharacter({
         id: name,

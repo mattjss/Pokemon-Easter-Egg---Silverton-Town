@@ -22,10 +22,19 @@ export const Loading = () => {
   );
 
   return (
-    <div className="loading">
-      <img src="assets/images/ui/logo.png" alt="logo" />
-      <div className="meter">
-        <span style={{ width: getPercentage(value) }}></span>i
+    <div className="loading loading-gba">
+      <div className="loading-gba-screen">
+        <div className="loading-inner">
+          <div className="loading-title">SILVERTOWN</div>
+          <div className="loading-subtitle">A portfolio by Matt Silverman</div>
+          <div className="loading-gba-bar">
+            <div
+              className="loading-gba-bar-fill"
+              style={{ width: getPercentage(value) }}
+            />
+          </div>
+          <div className="loading-percent">{getPercentage(value)}</div>
+        </div>
       </div>
     </div>
   );

@@ -577,6 +577,63 @@
           "width": 0,
           "x": 504,
           "y": 263
+        },
+        {
+          "height": 0,
+          "id": 43,
+          "name": "dialog",
+          "point": true,
+          "properties": [
+            {
+              "name": "content",
+              "type": "string",
+              "value": "Matt Design\nProduct Design for Startups\n0→1 · UI/UX · Strategy → Launch"
+            }
+          ],
+          "rotation": 0,
+          "type": "",
+          "visible": true,
+          "width": 0,
+          "x": 552,
+          "y": 120
+        },
+        {
+          "height": 0,
+          "id": 44,
+          "name": "dialog",
+          "point": true,
+          "properties": [
+            {
+              "name": "content",
+              "type": "string",
+              "value": "Skills: Figma · React · Swift · Three.js · Cursor · Xcode\nSpecialty: Making complex things feel simple and human."
+            }
+          ],
+          "rotation": 0,
+          "type": "",
+          "visible": true,
+          "width": 0,
+          "x": 600,
+          "y": 264
+        },
+        {
+          "height": 0,
+          "id": 45,
+          "name": "dialog",
+          "point": true,
+          "properties": [
+            {
+              "name": "content",
+              "type": "string",
+              "value": "Clients: MakersPlace · Olympus Finance · Odyssey DAO · The Action Network · and many more.\nPhilosophy: Products should feel like a natural extension of yourself."
+            }
+          ],
+          "rotation": 0,
+          "type": "",
+          "visible": true,
+          "width": 0,
+          "x": 456,
+          "y": 168
         }
       ],
       "opacity": 1,
@@ -599,7 +656,7 @@
     }
   ],
   "nextlayerid": 10,
-  "nextobjectid": 43,
+  "nextobjectid": 46,
   "orientation": "orthogonal",
   "properties": [
     {

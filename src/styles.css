@@ -202,6 +202,7 @@ div.hovered label {
   }
 }
 
+/* Game Boy Advance / GBA SP-style loader */
 .loading {
   position: absolute;
   display: flex;
@@ -210,15 +211,84 @@ div.hovered label {
   flex-direction: column;
   width: 100%;
   height: 100%;
+  z-index: 100000;
 }
 
-.loading img {
-  margin-bottom: 128px;
+/* GBA: dark outer shell (SP casing), inner lit screen */
+.loading-gba {
+  background: linear-gradient(180deg, #2a2a3a 0%, #1a1a28 100%);
+}
+
+.loading-gba-screen {
+  width: min(90vw, 400px);
+  max-height: 85vh;
+  aspect-ratio: 3 / 2;
+  max-aspect-ratio: 3/2;
+  background: linear-gradient(180deg, #f5f7fc 0%, #e2e8f0 50%, #d1dae6 100%);
+  border-radius: 12px;
+  box-shadow:
+    inset 0 0 0 3px #4a5568,
+    inset 0 2px 4px rgba(255, 255, 255, 0.6),
+    0 4px 20px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.loading-gba .loading-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+/* GBA boot: text turns blue; Nintendo logo pink */
+.loading-gba .loading-title {
+  font-family: "Pokemon", monospace;
+  font-size: clamp(18px, 4.5vw, 28px);
+  color: #0066b8;
+  letter-spacing: 0.12em;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.8),
+    1px 2px 2px rgba(0, 102, 184, 0.3);
+}
+
+.loading-gba .loading-subtitle {
+  font-family: "Pokemon", monospace;
+  font-size: clamp(10px, 2.5vw, 13px);
+  color: #c41e5a;
+  margin-bottom: 0;
+}
+
+.loading-gba .loading-percent {
+  font-family: "Pokemon", monospace;
+  font-size: 14px;
+  color: #2d3748;
+}
+
+/* GBA-style progress bar: blue fill, light track */
+.loading-gba-bar {
+  width: min(260px, 85%);
+  height: 14px;
+  background: #b0bcc8;
+  border-radius: 7px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.loading-gba-bar-fill {
+  height: 100%;
+  background: linear-gradient(180deg, #0099ff 0%, #0066b8 100%);
+  border-radius: 7px;
+  transition: width 0.15s ease-out;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3) inset;
 }
 
 .meter {
   box-sizing: content-box;
-  height: 20px; /* Can be anything */
+  height: 20px;
   position: relative;
   background: #555;
   border-radius: 25px;
@@ -242,9 +312,44 @@ div.hovered label {
   overflow: hidden;
 }
 
+#ui .team-header {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #98c8f8;
+}
+
+#ui .team-trainer-name {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#ui .team-party-count {
+  font-size: 18px;
+  color: #555;
+  margin-top: 4px;
+}
+
+#ui .team-subtitle {
+  font-size: 14px;
+  color: #698096;
+  margin-top: 2px;
+}
+
 #ui .team {
   display: flex;
+  flex-direction: column;
+}
+
+#ui .team-columns {
+  display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+#ui .team .column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 #ui .team .entry {
@@ -296,4 +401,56 @@ div.hovered label {
 
 .gender-female {
   color: #f9789f;
+}
+
+/* Bag & You menus */
+.bag-menu .content,
+.you-menu .content {
+  padding: 20px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.bag-title,
+.you-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #98c8f8;
+  padding-bottom: 8px;
+}
+
+.bag-section {
+  margin-bottom: 20px;
+}
+
+.bag-section-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #698096;
+  margin-bottom: 8px;
+}
+
+.bag-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bag-section li {
+  padding: 4px 0;
+  line-height: 1.4;
+}
+
+.you-card {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.you-line {
+  padding: 2px 0;
+}
+
+.you-line.hovered {
+  color: red;
 }

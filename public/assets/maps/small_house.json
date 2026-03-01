@@ -211,7 +211,7 @@
             {
               "name": "content",
               "type": "string",
-              "value": "Design books: Don't Make Me Think · The Design of Everyday Things · Shape Up"
+              "value": "History shelf:\n· David McCullough — 1776, Truman, John Adams\n· Stephen Ambrose — Undaunted Courage\n· Charles C. Mann — 1491\n· James A. Warren — God, War, and Providence"
             }
           ],
           "rotation": 0,
@@ -220,6 +220,188 @@
           "width": 0,
           "x": 599,
           "y": 305
+        },
+        {
+          "height": 0,
+          "id": 32,
+          "name": "dialog",
+          "point": true,
+          "properties": [
+            {
+              "name": "content",
+              "type": "string",
+              "value": "Design shelf:\n· The Design of Everyday Things\n· Shape Up\n· Don't Make Me Think\n· Walter Isaacson — Jobs\n· Tony Fadell — Build"
+            }
+          ],
+          "rotation": 0,
+          "type": "",
+          "visible": true,
+          "width": 0,
+          "x": 647,
+          "y": 305
+        },
+        {
+          "height": 0,
+          "id": 33,
+          "name": "dialog",
+          "point": true,
+          "properties": [
+            {
+              "name": "content",
+              "type": "string",
+              "value": "Current project: A Pokémon-style portfolio.\nYou're standing in it right now.\nTools: Figma · Cursor · Perplexity · v0 · Xcode"
+            }
+          ],
+          "rotation": 0,
+          "type": "",
+          "visible": true,
+          "width": 0,
+          "x": 647,
+          "y": 353
+        },
+        {
+          "height": 0,
+          "id": 34,
+          "name": "dialog",
+          "point": true,
+          "properties": [
+            {
+              "name": "content",
+              "type": "string",
+              "value": "Morning: bone broth, pasture raised eggs, greek yogurt.\nLunch: salmon, chicken, avocado, rice.\nDinner: grass fed beef, bison, lamb, wild caught salmon.\nCheat meal: sushi. Or pizza. Or a burger."
+            }
+          ],
+          "rotation": 0,
+          "type": "",
+          "visible": true,
+          "width": 0,
+          "x": 695,
+          "y": 353
+        },
+        {
+          "height": 0,
+          "id": 36,
+          "name": "dialog",
+          "point": true,
+          "properties": [
+            {
+              "name": "content",
+              "type": "string",
+              "value": "Watch box — empty for now.\nBut he studies the craft obsessively.\nRexhep Rexhepi. FP Journe. Roland Murphy.\nOne day."
+            }
+          ],
+          "rotation": 0,
+          "type": "",
+          "visible": true,
+          "width": 0,
+          "x": 695,
+          "y": 256
+        },
+        {
+          "height": 0,
+          "id": 37,
+          "name": "dialog",
+          "point": true,
+          "properties": [
+            {
+              "name": "content",
+              "type": "string",
+              "value": "Card binder — PSA graded.\nBaseball: Bonds, Gwynn, Griffey, Posey, Logan Webb...\nHockey: Celebrini, McAvoy, Selanne, Kariya, Kane...\nPokémon + Yugioh: Japanese versions only."
+            }
+          ],
+          "rotation": 0,
+          "type": "",
+          "visible": true,
+          "width": 0,
+          "x": 551,
+          "y": 400
+        },
+        {
+          "height": 0,
+          "id": 38,
+          "name": "dialog",
+          "point": true,
+          "properties": [
+            {
+              "name": "content",
+              "type": "string",
+              "value": "Currently in rotation:\nMovies: The Departed · Bourne Identity · Good Will Hunting · Bull Durham · Oceans Eleven\nShows: Friends · Turn: Washington's Spies"
+            }
+          ],
+          "rotation": 0,
+          "type": "",
+          "visible": true,
+          "width": 0,
+          "x": 551,
+          "y": 256
+        },
+        {
+          "height": 0,
+          "id": 39,
+          "name": "dialog",
+          "point": true,
+          "properties": [
+            {
+              "name": "content",
+              "type": "string",
+              "value": "On the turntable:\nThe Eagles · Elton John · Eric Clapton · John Mayer\nParker McCollum · Zac Brown Band · Tyler Childers\n...and smooth jazz. Always smooth jazz."
+            }
+          ],
+          "rotation": 0,
+          "type": "",
+          "visible": true,
+          "width": 0,
+          "x": 623,
+          "y": 400
+        },
+        {
+          "height": 0,
+          "id": 35,
+          "name": "npc",
+          "point": true,
+          "properties": [
+            {
+              "name": "facing_direction",
+              "type": "string",
+              "value": "down"
+            },
+            {
+              "name": "move",
+              "type": "bool",
+              "value": false
+            },
+            {
+              "name": "name",
+              "type": "string",
+              "value": "npc_mattstudio"
+            },
+            {
+              "name": "scenario_ids",
+              "type": "string",
+              "value": "9"
+            },
+            {
+              "name": "sprite",
+              "type": "string",
+              "value": "scientist"
+            },
+            {
+              "name": "x",
+              "type": "int",
+              "value": 11
+            },
+            {
+              "name": "y",
+              "type": "int",
+              "value": 5
+            }
+          ],
+          "rotation": 0,
+          "type": "",
+          "visible": true,
+          "width": 0,
+          "x": 528,
+          "y": 240
         }
       ],
       "opacity": 1,
@@ -242,7 +424,7 @@
     }
   ],
   "nextlayerid": 9,
-  "nextobjectid": 32,
+  "nextobjectid": 40,
   "orientation": "orthogonal",
   "properties": [
     {

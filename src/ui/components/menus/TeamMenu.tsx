@@ -150,19 +150,27 @@ export const TeamMenu = ({ setSelectedOption }: TeamMenuProps) => {
     return result;
   }, []);
 
+  const partyCount = team?.length ?? 0;
+
   return (
     <div className="menu full">
       <div className="content team">
+        <div className="team-header">
+          <div className="team-trainer-name">Matt Silverman</div>
+          <div className="team-party-count">Party: {partyCount}/6</div>
+          <div className="team-subtitle">Silvertown Trainer — UI/UX Designer</div>
+        </div>
         {team?.length === 0 && (
           <div className="empty">
-            <div className="text">You don't have any pokemons yet.</div>
+            <div className="text">You don&apos;t have any pokemons yet.</div>
             <div className="text">Go catch some!</div>
           </div>
         )}
 
-        {teamChunks?.map((chunk) => (
-          <div className="column">
-            {chunk?.map(({ id, hp, gender }) => {
+        <div className="team-columns">
+          {teamChunks?.map((chunk, si) => (
+            <div key={si} className="column">
+              {chunk?.map(({ id, hp, gender }) => {
               const pokemon = pokemons.find((p) => p.id === id);
 
               return (
@@ -191,9 +199,10 @@ export const TeamMenu = ({ setSelectedOption }: TeamMenuProps) => {
                   </div>
                 </div>
               );
-            })}
-          </div>
-        ))}
+              })}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -18,6 +18,13 @@ export default class BootScene extends Scene {
   launchGame(): void {
     const userSettings = useUserDataStore.getState().settings;
 
+    // Start at default spawn with a fresh world every time (pokeballs & objects visible)
+    useUserDataStore.getState().update({
+      position: undefined,
+      inventory: [],
+      scenariosCompleted: [],
+    });
+
     Object.values(Audios).forEach((audio) => {
       this.sound.add(audio);
     });
@@ -47,8 +54,7 @@ export default class BootScene extends Scene {
   }
 
   loadImages(): void {
-    // UI
-    this.load.image("logo", "assets/images/ui/logo.png");
+    // UI (logo removed; Game Boy-style loader in React)
     this.load.image(
       "title_background",
       "assets/images/ui/title_background.png",
