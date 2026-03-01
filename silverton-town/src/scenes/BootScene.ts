@@ -72,29 +72,9 @@ export class BootScene extends Phaser.Scene {
       // Continue; WorldScene will use fallbacks
     });
 
-    // Spritesheets
-    this.load.spritesheet('player', '/assets/sprites/character-spritesheet.png', {
-      frameWidth: 32,
-      frameHeight: 32,
-    });
-
+    this.load.image('serene', '/assets/tilesets/serene-village.png');
+    this.load.spritesheet('player', '/assets/sprites/character-spritesheet.png', { frameWidth: 32, frameHeight: 32 });
     this.load.image('characters', '/assets/sprites/Characters_V3_Colour.png');
-
-    // Tilesets
-    this.load.image('overworld', '/assets/tilesets/overworld.png');
-
-    this.load.image(
-      'tileset1',
-      '/assets/tilesets/Game Boy Advance - Pokemon FireRed LeafGreen - Tileset.png'
-    );
-    this.load.image(
-      'tileset2',
-      '/assets/tilesets/Game Boy Advance - Pokemon FireRed LeafGreen - Overworld.png'
-    );
-
-    this.load.tilemapTiledJSON('world', '/assets/tilesets/world.json');
-
-    // Audio
     this.load.audio('town-bgm', '/assets/audio/town-bgm.mp3');
   }
 
